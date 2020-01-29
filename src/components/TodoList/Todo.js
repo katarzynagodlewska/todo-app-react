@@ -1,9 +1,10 @@
 import React from 'react';
 
 function Todo(props) {
+    const {todo} = props
     return (
         <div>
-            Moje zadanie
+            {todo}
         </div>
     )
 }
