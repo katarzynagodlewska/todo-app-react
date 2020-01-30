@@ -2,18 +2,30 @@ import React, { useState } from 'react';
 import Todo from './Todo';
 
 function TodoList(props) {
-    const [todoList, setTodoList] = useState([]);
-    const [inputValue, setInputValue] = useState("");
+    //const [todoList, setTodoList] = useState([]);
+    //const [inputValue, setInputValue] = useState("");
+    const [todoListState, setTodoListState] = useState({ todos:[], inputValue: "" })
 
     const handleInputChange = (event) => {
         const {value} = event.target;
-        setInputValue(value);
+        //setInputValue(value);
+        setTodoListState({
+            ...todoListState,
+            inputValue: value
+        })
     }
 
     const handleButtonClick = () => {
-        setTodoList([...todoList, inputValue]);
-        setInputValue("");
+        //setTodoList([...todoList, inputValue]);
+        //etInputValue("");
+        const { todos } = todoListState;
+        setTodoListState({
+            todos: [...todos, inputValue],
+            inputValue: ""
+        })
     }
+
+    const {todos, inputValue} = todoListState;
     return (
         <div>
             Moja aplikacja Todo 
@@ -28,7 +40,7 @@ function TodoList(props) {
             >
                 Dodaj
             </button>
-            {todoList.map((todo) => (            
+            {todos.map((todo) => (            
             <Todo                 
             key={todo}
             todo={todo}
