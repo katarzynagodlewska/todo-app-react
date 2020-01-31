@@ -4,7 +4,7 @@ import Todo from './Todo';
 function TodoList(props) {
     //const [todoList, setTodoList] = useState([]);
     //const [inputValue, setInputValue] = useState("");
-    const [todoListState, setTodoListState] = useState({ todos:[], inputValue: "" })
+    const [todoListState, setTodoListState] = useState({ todos:[], inputValue: "", error: "" })
 
     const handleInputChange = (event) => {
         const {value} = event.target;
@@ -16,16 +16,23 @@ function TodoList(props) {
     }
 
     const handleButtonClick = () => {
-        //setTodoList([...todoList, inputValue]);
-        //etInputValue("");
-        const { todos } = todoListState;
+        const {todos} = todoListState
+        if (todos.some(todo => todo === inputValue)) {
+            setTodoListState({
+                ...todoListState,
+                error: "To zadanie już istnieje",
+                inputValue: "",
+            })
+            return
+        }
         setTodoListState({
+            error:"",
             todos: [...todos, inputValue],
             inputValue: ""
         })
     }
 
-    const {todos, inputValue} = todoListState;
+    const {error, todos, inputValue} = todoListState;
     return (
         <div className="TodoList">
             Moja aplikacja Todo 
@@ -40,6 +47,9 @@ function TodoList(props) {
             >
                 Dodaj
             </button>
+            <p>
+                {error}
+            </p>
             {todos.map((todo) => (            
             <Todo                 
             key={todo}
