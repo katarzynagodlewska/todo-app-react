@@ -47,9 +47,11 @@ function TodoList(props) {
             >
                 Dodaj
             </button>
+            {!!error &&
             <p>
                 {error}
             </p>
+            }
             {todos.map((todo) => (            
             <Todo                 
             key={todo}
