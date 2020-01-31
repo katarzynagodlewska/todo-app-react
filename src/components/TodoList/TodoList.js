@@ -27,15 +27,15 @@ function TodoList(props) {
 
     const {todos, inputValue} = todoListState;
     return (
-        <div>
+        <div className="TodoList">
             Moja aplikacja Todo 
-            <input
+            <input className="Input"
                 name="Todo Input"
-                placeholder="Co będziemy dzisiaj rbić?"
+                placeholder="Co będziemy dzisiaj robić?"
                 value={inputValue}
                 onChange={handleInputChange}
             />
-            <button
+            <button className="Button"
                 onClick={handleButtonClick}
             >
                 Dodaj
