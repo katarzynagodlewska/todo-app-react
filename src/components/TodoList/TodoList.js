@@ -34,6 +34,12 @@ function TodoList(props) {
         })
     }
 
+    const handleTodoRemove = (todoValue) => {
+        setTodoListState({
+            ...todoListState,
+            todos: todos.filter(todo => todo !== todoValue)
+        });
+    }
     const {error, todos, inputValue} = todoListState;
     return (
         <div className="TodoList">
@@ -56,8 +62,9 @@ function TodoList(props) {
             }
             {todos.map((todo) => (            
             <Todo                 
-            key={todo}
-            todo={todo}
+                key={todo}
+                todo={todo}
+                handleCloseClick = {handleTodoRemove}
             />
             ))}   
         </div>
