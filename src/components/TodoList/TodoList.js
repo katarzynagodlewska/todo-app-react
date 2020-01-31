@@ -17,7 +17,9 @@ function TodoList(props) {
 
     const handleButtonClick = () => {
         const {todos} = todoListState
-        if (todos.some(todo => todo === inputValue)) {
+
+        if(!inputValue) return;
+        if(todos.some(todo => todo === inputValue)) {
             setTodoListState({
                 ...todoListState,
                 error: "To zadanie już istnieje",
