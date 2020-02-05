@@ -43,7 +43,9 @@ function TodoList(props) {
     const {error, todos, inputValue} = todoListState;
     return (
         <div className="TodoList">
+            <h1>
             Moja aplikacja Todo 
+            </h1>            
             <input className="Input"
                 name="Todo Input"
                 placeholder="Co będziemy dzisiaj robić?"
